@@ -5,18 +5,67 @@ import (
 	"solidgate_test/internal/pkg/payload"
 	"solidgate_test/pkg/math"
 	"strconv"
+	"time"
 )
 
-func IsCardValid(request payload.ValidCardRequest) {
-
-}
-func isFirstDigitValid(c rune) bool {
-	firstDigit, err := strconv.Atoi(string(c))
+func IsCardValid(request payload.ValidCardRequest) (bool, error) {
+	expirationDate, err := time.Parse(
+		time.DateOnly,
+		fmt.Sprintf("%d-%d-01", request.ExpirationYear, request.ExpirationMonth),
+	)
 	if err != nil {
-		return false
+		return false, ErrInvalidDate
 	}
 
-	fmt.Println(firstDigit)
+	if expirationDate.Before(time.Now()) {
+		return false, ErrInvalidDate
+	}
+
+	cardNumber, err := strconv.Atoi(request.CardNumber)
+	if err != nil {
+		return false, err
+	}
+
+	if !luhnAlg(cardNumber, len(request.CardNumber)) {
+		return false, ErrCheckSum
+	}
+
+	if !isIssuingNetworkDataValid(request.CardNumber) {
+		return false, ErrIssuingNetworkData
+	}
+
+	return true, nil
+}
+
+func isIssuingNetworkDataValid(cardNumber string) bool {
+	for _, data := range IssuedNetworks {
+		if isFirstDigitsValid(cardNumber, data.IINRanges) && isLengthValid(cardNumber, data.Length) {
+			return true
+		}
+	}
+
+	return false
+}
+
+func isFirstDigitsValid(cardNumber string, IInRanges []Range) bool {
+	for _, v := range IInRanges {
+		n := len(strconv.Itoa(v.From))
+		firstNDigits, _ := strconv.Atoi(cardNumber[:n])
+		if firstNDigits >= v.From && firstNDigits <= v.To {
+			return true
+		}
+	}
+
+	return false
+}
+
+func isLengthValid(cardNumber string, lengthRanges []Range) bool {
+	for _, ln := range lengthRanges {
+		if len(cardNumber) >= ln.From && len(cardNumber) <= ln.To {
+			return true
+		}
+	}
+
 	return false
 }
 
