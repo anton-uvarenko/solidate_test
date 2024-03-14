@@ -1,4 +1,4 @@
-module solidgate_test
+module github.com/anton-uvarenko/solidgate_test
 
 go 1.22
 

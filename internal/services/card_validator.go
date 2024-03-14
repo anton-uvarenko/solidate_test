@@ -1,8 +1,8 @@
 package services
 
 import (
-	"solidgate_test/internal/pkg/payload"
-	"solidgate_test/internal/pkg/validate"
+	"github.com/anton-uvarenko/solidgate_test/internal/pkg/payload"
+	"github.com/anton-uvarenko/solidgate_test/internal/pkg/validate"
 )
 
 type CardValidatorService struct {

@@ -2,8 +2,8 @@ package validate
 
 import (
 	"fmt"
-	"solidgate_test/internal/pkg/payload"
-	"solidgate_test/pkg/math"
+	"github.com/anton-uvarenko/solidgate_test/internal/pkg/payload"
+	"github.com/anton-uvarenko/solidgate_test/pkg/math"
 	"strconv"
 	"time"
 )

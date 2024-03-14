@@ -1,8 +1,8 @@
 package validate
 
 import (
+	"github.com/anton-uvarenko/solidgate_test/internal/pkg/payload"
 	"github.com/stretchr/testify/assert"
-	"solidgate_test/internal/pkg/payload"
 	"testing"
 )
 

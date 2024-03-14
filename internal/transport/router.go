@@ -1,9 +1,9 @@
 package transport
 
 import (
+	"github.com/anton-uvarenko/solidgate_test/internal/transport/handlers"
 	"github.com/go-chi/chi/v5"
 	"net/http"
-	"solidgate_test/internal/transport/handlers"
 )
 
 func NewRouter(handler *handlers.Handler) *http.Server {

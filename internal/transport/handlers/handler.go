@@ -1,6 +1,6 @@
 package handlers
 
-import "solidgate_test/internal/services"
+import "github.com/anton-uvarenko/solidgate_test/internal/services"
 
 type Handler struct {
 	CardValidatorHandler *CardValidatorHandler

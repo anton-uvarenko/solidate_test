@@ -3,8 +3,8 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/anton-uvarenko/solidgate_test/internal/pkg/payload"
 	"net/http"
-	"solidgate_test/internal/pkg/payload"
 )
 
 type CardValidatorHandler struct {

@@ -1,10 +1,10 @@
 package main
 
 import (
+	"github.com/anton-uvarenko/solidgate_test/internal/services"
+	"github.com/anton-uvarenko/solidgate_test/internal/transport"
+	"github.com/anton-uvarenko/solidgate_test/internal/transport/handlers"
 	"log"
-	"solidgate_test/internal/services"
-	"solidgate_test/internal/transport"
-	"solidgate_test/internal/transport/handlers"
 )
 
 func main() {
