@@ -1,4 +1,4 @@
-package validate
+package card
 
 type IssueNetwork struct {
 	NetworkName string

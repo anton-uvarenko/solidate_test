@@ -1,4 +1,4 @@
-package validate
+package card
 
 import (
 	"github.com/anton-uvarenko/solidgate_test/internal/pkg/payload"
