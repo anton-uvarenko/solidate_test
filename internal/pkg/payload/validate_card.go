@@ -1,8 +1,8 @@
 package payload
 
 type ValidateCardResponse struct {
-	Valid string        `json:"valid"`
-	Error ErrorResponse `json:"error,omitempty"`
+	Valid bool   `json:"valid"`
+	Error *Error `json:"error,omitempty"`
 }
 
 type ValidCardRequest struct {
